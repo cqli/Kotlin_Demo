@@ -1,7 +1,6 @@
 package com.player.lcq.videoplayer.ui.activity
 
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.player.lcq.videoplayer.R
@@ -24,6 +23,15 @@ class MainActivity : BaseActivity(), ToolBarManager {
 
     override fun initData() {
         initMainToolBar()
+        tv_click.setOnClickListener({
+            if (sp?.getIntValue("day_night", 0) == 0) {
+                sp?.setValue("day_night", 1)
+            } else {
+                sp?.setValue("day_night", 0)
+            }
+            recreate()
+            buttomnavigation.selectedItemId = buttomnavigation.menu.getItem(0).itemId
+        })
     }
 
     override fun initListener() {

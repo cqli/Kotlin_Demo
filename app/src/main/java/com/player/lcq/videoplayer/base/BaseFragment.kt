@@ -1,10 +1,12 @@
 package com.player.lcq.videoplayer.base
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.player.lcq.videoplayer.utils.SharedPreferencesUtil
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.runOnUiThread
 import org.jetbrains.anko.toast
@@ -14,8 +16,10 @@ import org.jetbrains.anko.toast
  * 所有frament的基类
  */
 abstract class BaseFragment : Fragment(), AnkoLogger {
+    var sp: SharedPreferencesUtil? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sp = SharedPreferencesUtil.getInstance(context, "mode", Context.MODE_APPEND)
         init()
     }
 

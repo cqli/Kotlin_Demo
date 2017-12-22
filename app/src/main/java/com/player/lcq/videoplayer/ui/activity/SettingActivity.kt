@@ -17,7 +17,6 @@ class SettingActivity : BaseActivity(), ToolBarManager {
     override fun getLayoutId(): Int {
         return R.layout.activity_setting
     }
-
     override fun initData() {
         initSettingToolbar()
         //swich 可以自动保存选中状态

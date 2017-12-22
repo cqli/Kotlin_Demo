@@ -21,6 +21,7 @@ class AboutActivity : BaseActivity(), ToolBarManager {
         return R.layout.activity_about
     }
 
+
     override fun initData() {
         initAboutToolBar()
         RxView.clicks(app_des)

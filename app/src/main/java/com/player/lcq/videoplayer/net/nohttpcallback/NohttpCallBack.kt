@@ -1,6 +1,6 @@
 package com.player.lcq.videoplayer.net.nohttpcallback
 
-import com.player.lcq.videoplayer.net.Constants
+import com.player.lcq.videoplayer.net.URLProviderUtils
 import com.player.lcq.videoplayer.net.request.BaseRequest
 import com.yanzhenjie.nohttp.NoHttp
 import com.yanzhenjie.nohttp.RequestMethod
@@ -19,9 +19,14 @@ class NohttpCallBack {
     /**
      * 悦单 界面列表请求
      */
-    inline fun <reified T> YueDanRequest(parames: Map<String, String>, res: SimpleResponseListener<T>) {
-        val req = BaseRequest<T>(Constants.yueDanUrl, RequestMethod.GET, T::class.java)
-        req.add(parames)
-        NoHttp.getRequestQueueInstance()?.add(YUEDANLIST, req, res)
+    inline fun <reified T> YueDanRequest(parames: Map<String, String>?, res: SimpleResponseListener<T>) {
+        val req = BaseRequest<T>(URLProviderUtils.getHomeUrl(1), RequestMethod.GET, T::class.java)
+        if (parames != null)
+            req.add(parames)
+        NoHttp.getRequestQueueInstance()?.add<T>(YUEDANLIST, req, res)
+    }
+
+    inline fun <reified T> YueDanRequest(res: SimpleResponseListener<T>) {
+        YueDanRequest(null, res)
     }
 }

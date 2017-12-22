@@ -4,6 +4,6 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimary"
+    android:background="?attr/custom_attr_app_title_layout_bg"
     android:orientation="vertical"
     app:titleTextColor="#fff" />
