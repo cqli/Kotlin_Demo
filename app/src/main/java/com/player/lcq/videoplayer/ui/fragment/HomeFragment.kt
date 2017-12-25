@@ -19,25 +19,22 @@ import kotlinx.android.synthetic.main.fragment_list.*
  * 首页
  */
 class HomeFragment : BaseFragment() {
+    val testProtocol by lazy { TestProtocol() }
+    private var mHomeDisposable: Disposable? = null
     override fun initView(): View? {
         return View.inflate(context, R.layout.fragment_list, null)
     }
 
     override fun initData() {
-        NohttpCallBack.nohttpCallBack.YueDanRequest(object : SimpleResponseListener<String>() {
-            override fun onFailed(what: Int, response: Response<String>?) {
-                super.onFailed(what, response)
-                tv_result?.text = response?.get().toString()
-            }
-
-            override fun onSucceed(what: Int, response: Response<String>?) {
-                super.onSucceed(what, response)
-
-
-                tv_result?.text = response?.get().toString()
-            }
-
-        })
+        RxUtils.dispose(mHomeDisposable)
+        mHomeDisposable = testProtocol.testHomeRequest(1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    tv_result?.text = it.toString()
+                }, {
+                    tv_result?.text = it.toString()
+                })
 
     }
 }

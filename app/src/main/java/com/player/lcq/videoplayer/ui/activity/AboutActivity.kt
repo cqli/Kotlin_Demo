@@ -14,6 +14,10 @@ import java.util.concurrent.TimeUnit
  * 关于界面
  */
 class AboutActivity : BaseActivity(), ToolBarManager {
+    override fun day_night() {
+        swich_day_night()
+    }
+
     override val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
 
 

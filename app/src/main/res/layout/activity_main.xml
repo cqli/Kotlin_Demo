@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.player.lcq.videoplayer.ui.activity.MainActivity">
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar" />
 
@@ -13,9 +11,10 @@
         android:id="@+id/tv_click"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="?attr/custom_attr_app_bg"
         android:gravity="center"
         android:text="点击切换主题"
-        android:textColor="?attr/custom_attr_app_title_layout_bg" />
+        android:textColor="?attr/custom_attr_text_color" />
 
 
     <FrameLayout
@@ -28,5 +27,8 @@
         android:id="@+id/buttomnavigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="?attr/custom_attr_app_bg"
+        app:itemIconTint="?attr/custom_attr_text_color"
+        app:itemTextColor="?attr/custom_attr_text_color"
         app:menu="@menu/navigation" />
 </LinearLayout>

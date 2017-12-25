@@ -12,14 +12,19 @@ import org.jetbrains.anko.find
  * 设置界面
  */
 class SettingActivity : BaseActivity(), ToolBarManager {
+    override fun day_night() {
+        swich_day_night()
+    }
+
     override val toolbar: Toolbar  by lazy { find<Toolbar>(R.id.toolbar) }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_setting
     }
+
     override fun initData() {
         initSettingToolbar()
-        //swich 可以自动保存选中状态
+////        swich 可以自动保存选中状态
 //        val sp = PreferenceManager.getDefaultSharedPreferences(this);
 //        val isPush = sp.getBoolean("push", false)
     }

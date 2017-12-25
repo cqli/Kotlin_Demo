@@ -29,6 +29,9 @@ public class URLProviderUtils {
         Log.i("Main_url", url);
         return url;
     }
+//http://mapi.yinyuetai.com/suggestions/front_page.json?
+// deviceinfo={"aid":"10201036","os":"Android","ov":"6.0.1","rn":"480*800","dn":"vivo X9i","cr":"46000","as":"WIFI","uid":"dbcaa6c4482bc05ecb0bf39dabf207d2","clid":110025000}
+// &offset=1&size=20&v=4&rn=640*540
 
     public static String getMVareaUrl() {
         String url = "http://mapi.yinyuetai.com/video/get_mv_areas.json?deviceinfo="

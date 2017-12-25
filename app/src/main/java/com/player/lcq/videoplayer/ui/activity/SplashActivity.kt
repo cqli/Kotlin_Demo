@@ -1,8 +1,11 @@
 package com.player.lcq.videoplayer.ui.activity
 
+import android.os.Build
 import android.support.v4.view.ViewCompat
 import android.support.v4.view.ViewPropertyAnimatorListener
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import com.player.lcq.videoplayer.R
 import com.player.lcq.videoplayer.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -23,6 +26,11 @@ class SplashActivity : BaseActivity(), ViewPropertyAnimatorListener {
     }
 
     override fun getLayoutId(): Int {
+        /*set it to be no title*/
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        /*set it to be full screen*/
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         return R.layout.activity_splash
     }
 

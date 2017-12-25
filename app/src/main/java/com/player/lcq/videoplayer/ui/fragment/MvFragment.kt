@@ -3,27 +3,34 @@ package com.player.lcq.videoplayer.ui.fragment
 import android.view.View
 import com.player.lcq.videoplayer.R
 import com.player.lcq.videoplayer.base.BaseFragment
-import com.ypy.eventbus.EventBus
+import com.player.lcq.videoplayer.net.nohttprxjava.TestProtocol
+import com.player.lcq.videoplayer.utils.RxUtils
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_list.*
 
 /**
  * Created by lcq on 2017/12/5.
  */
 class MvFragment : BaseFragment() {
+    val testProtocol by lazy { TestProtocol() }
+    private var mHomeDisposable: Disposable? = null
     override fun initView(): View? {
         return View.inflate(context, R.layout.fragment_list, null)
     }
 
     override fun initData() {
-        tv_result.text = "点击切换主题"
-        tv_result?.setOnClickListener({
-            if (sp?.getIntValue("day_night", 0) == 0) {
-                sp?.setValue("day_night", 1)
-            } else {
-                sp?.setValue("day_night", 0)
-            }
+        RxUtils.dispose(mHomeDisposable)
+        mHomeDisposable = testProtocol.testHomeRequest(1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    tv_result?.text = it.toString()
+                }, {
+                    tv_result?.text = it.toString()
+                })
 
-        })
     }
 
 

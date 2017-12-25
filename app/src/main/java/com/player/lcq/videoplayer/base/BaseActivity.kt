@@ -1,14 +1,20 @@
 package com.player.lcq.videoplayer.base
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.view.WindowManager
 import com.player.lcq.videoplayer.R
 import com.player.lcq.videoplayer.utils.SharedPreferencesUtil
 import com.ypy.eventbus.EventBus
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
 
 /**
  * Created by lcq on 2017/11/22.
@@ -29,6 +35,15 @@ abstract class BaseActivity : AppCompatActivity(), AnkoLogger {
         setContentView(getLayoutId())
         initListener()
         initData()
+    }
+
+    fun swich_day_night() {
+        if (sp?.getIntValue("day_night", 0) == 0) {
+            sp?.setValue("day_night", 1)
+        } else {
+            sp?.setValue("day_night", 0)
+        }
+        recreate()
     }
 
     /**

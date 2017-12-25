@@ -3,6 +3,7 @@ package com.player.lcq.videoplayer
 import android.support.multidex.MultiDexApplication
 import com.player.lcq.videoplayer.net.nohttprxjava.DefOkHttpNetworkExecutor
 import com.yanzhenjie.nohttp.InitializationConfig
+import com.yanzhenjie.nohttp.Logger
 import com.yanzhenjie.nohttp.NoHttp
 
 
@@ -46,6 +47,8 @@ class MyApplication : MultiDexApplication() {
                 //                .hostnameVerifier() // 全局HostnameVerifier。
                 .retry(1) // 全局重试次数，配置后每个请求失败都会重试x次。
                 .build()
+        Logger.setDebug(true);// 开启NoHttp的调试模式, 配置后可看到请求过程、日志和错误信息。
+        Logger.setTag("NoHttpSample");// 打印Log的tag。
         NoHttp.initialize(config)
     }
 }

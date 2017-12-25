@@ -15,6 +15,11 @@ import org.jetbrains.anko.find
  * App 主界面
  */
 class MainActivity : BaseActivity(), ToolBarManager {
+    override fun day_night() {
+        swich_day_night()
+        buttomnavigation.selectedItemId = buttomnavigation.menu.getItem(0).itemId
+    }
+
     override val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
 
     override fun getLayoutId(): Int {
@@ -23,15 +28,6 @@ class MainActivity : BaseActivity(), ToolBarManager {
 
     override fun initData() {
         initMainToolBar()
-        tv_click.setOnClickListener({
-            if (sp?.getIntValue("day_night", 0) == 0) {
-                sp?.setValue("day_night", 1)
-            } else {
-                sp?.setValue("day_night", 0)
-            }
-            recreate()
-            buttomnavigation.selectedItemId = buttomnavigation.menu.getItem(0).itemId
-        })
     }
 
     override fun initListener() {

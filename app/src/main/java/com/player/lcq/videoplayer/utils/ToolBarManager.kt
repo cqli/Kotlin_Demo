@@ -1,5 +1,6 @@
 package com.player.lcq.videoplayer.utils
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.widget.Toolbar
 import com.player.lcq.videoplayer.R
@@ -21,7 +22,7 @@ interface ToolBarManager {
         //kotlin 和java调用特性
         //如果java接口中只有一个未实现的方法  可以省略接口对象 直接用{}表示未实现的方法
         toolbar.setOnMenuItemClickListener {
-            toolbar.context.startActivity(Intent(toolbar.context, SettingActivity::class.java))
+            day_night()
             true
         }
 //        toolbar.setOnMenuItemClickListener(object : Toolbar.OnMenuItemClickListener {
@@ -38,6 +39,11 @@ interface ToolBarManager {
 //        })
 
     }
+
+    /**
+     * 模式切换
+     */
+    fun day_night();
 
     /**
      * 处理设置界面的toolbar

@@ -25,6 +25,8 @@ class SettingFragment : PreferenceFragment() {
         val key = preference?.key
         if (key.equals("about")) {
             activity.startActivity(Intent(activity, AboutActivity::class.java))
+        } else if (key.equals("day_night")) {
+
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference)
     }

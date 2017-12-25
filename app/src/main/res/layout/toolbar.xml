@@ -6,4 +6,4 @@
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/custom_attr_app_title_layout_bg"
     android:orientation="vertical"
-    app:titleTextColor="#fff" />
+    app:titleTextColor="?attr/custom_attr_text_color" />

@@ -10,6 +10,6 @@
         android:scaleType="centerCrop"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        android:src="@mipmap/default_splash_bg" />
+        android:src="@mipmap/splash_background" />
 
 </android.support.constraint.ConstraintLayout>
