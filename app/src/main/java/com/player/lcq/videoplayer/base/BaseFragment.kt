@@ -19,17 +19,9 @@ abstract class BaseFragment : Fragment(), AnkoLogger {
     var sp: SharedPreferencesUtil? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sp = SharedPreferencesUtil.getInstance(context, "mode", Context.MODE_APPEND)
-        init()
+        sp = SharedPreferencesUtil.getInstance(context)
     }
 
-    /**
-     * 初始化操作
-     */
-    protected fun init() {
-
-
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return initView()

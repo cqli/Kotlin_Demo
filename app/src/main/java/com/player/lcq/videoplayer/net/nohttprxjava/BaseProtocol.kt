@@ -1,25 +1,20 @@
 package com.player.lcq.videoplayer.net.nohttprxjava
 
 import com.google.gson.Gson
-import com.player.lcq.videoplayer.net.URLProviderUtils
-import com.player.lcq.videoplayer.net.request.BaseRequest
 import com.player.lcq.videoplayer.utils.GsonUtils
-import com.yanzhenjie.nohttp.Headers
-import com.yanzhenjie.nohttp.RequestMethod
-import com.yanzhenjie.nohttp.rest.SyncRequestExecutor
-import com.yanzhenjie.nohttp.tools.HeaderUtils
 import com.yanzhenjie.nohttp.tools.IOUtils
 import io.reactivex.Observable
 import io.reactivex.Observable.create
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
+import java.lang.reflect.ParameterizedType
 
 /**
  * Created by lcq on 2017/12/15.
  * 被观察着(被订阅)
  */
-open class BaseProtocol {
+open class BaseProtocol<RESPONSE> {
 
     private val mGson by lazy { Gson() }
     val client by lazy { OkHttpClient() }
@@ -29,7 +24,7 @@ open class BaseProtocol {
      *  @param method
      *  @param params
      */
-    protected fun <T> createObservable(url: String, clazz: Class<T>): Observable<Any> {
+    protected fun createObservable(url: String): Observable<RESPONSE> {
         return create {
             // val req = BaseRequest(url, method, clazz)
             //            if (params != null)
@@ -49,7 +44,11 @@ open class BaseProtocol {
             val res: Response = client.newCall(request).execute()
             if (res.isSuccessful) {
                 val result = parseResponseString(res?.body()?.bytes())
-                val res = GsonUtils.GsonToList<T>(result)
+                val res: RESPONSE
+                //获取泛型类型
+                val type = (this.javaClass
+                        .genericSuperclass as ParameterizedType).actualTypeArguments[0]
+                res = GsonUtils.gson.fromJson<RESPONSE>(result, type)
                 it.onNext(res)
                 it.onComplete()
             } else {
@@ -81,9 +80,4 @@ open class BaseProtocol {
             return ""
         return IOUtils.toString(responseBody, "UTF-8")
     }
-
-    protected fun <T> createObservable(url: String, method: RequestMethod, clazz: Class<T>): Observable<Any> {
-        return createObservable(url, clazz)
-    }
-
 }

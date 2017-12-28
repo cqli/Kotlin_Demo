@@ -7,16 +7,6 @@
 
     <include layout="@layout/toolbar" />
 
-    <TextView
-        android:id="@+id/tv_click"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="?attr/custom_attr_app_bg"
-        android:gravity="center"
-        android:text="点击切换主题"
-        android:textColor="?attr/custom_attr_text_color" />
-
-
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -28,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="?attr/custom_attr_app_bg"
-        app:itemIconTint="?attr/custom_attr_text_color"
-        app:itemTextColor="?attr/custom_attr_text_color"
+        app:itemIconTint="?attr/custom_attr_app_title_layout_bg"
+        app:itemTextColor="?attr/custom_attr_app_title_layout_bg"
         app:menu="@menu/navigation" />
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.player.lcq.videoplayer.ui.activity
 
-import android.os.Build
 import android.support.v4.view.ViewCompat
 import android.support.v4.view.ViewPropertyAnimatorListener
 import android.view.View

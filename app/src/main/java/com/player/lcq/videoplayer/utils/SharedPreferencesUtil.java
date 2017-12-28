@@ -13,16 +13,6 @@ public class SharedPreferencesUtil {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
-    public final static String SHAREPREFFILENAME = "zgjkj_sharepref";// 文件名称
-    public final static String SHAREPREFNEWSREADED = "zgjkj_newsreaded";// 记录新闻已读状态
-    public final static String LOGINED = "logined";// 是否已登录状态
-    public static final String USERNAME = "username";
-    public static final String NICKNAME = "nickName";
-    public static final String PHOTOIMG = "photoImg";
-
-    public static final String QQTOKEN = "qqtoken";
-    public static final String QQTOKENSECRET = "qqtokensecret";
-    public static final String QQVERIFIER = "qqverifier";
 
     @SuppressWarnings("unused")
     private String filename;
@@ -41,14 +31,11 @@ public class SharedPreferencesUtil {
     /***
      * 单例模式需要修改，同步问题需要修改
      * @param _mContext
-     * @param filename
-     * @param mode
      * @return
      */
-    public static SharedPreferencesUtil getInstance(Context _mContext,
-                                                    String filename, Integer mode) {
+    public static SharedPreferencesUtil getInstance(Context _mContext) {
         if (mSharePrefUtils == null) {
-            return new SharedPreferencesUtil(_mContext, filename, mode);
+            return new SharedPreferencesUtil(_mContext, "mode",  Context.MODE_APPEND);
         } else {
             return mSharePrefUtils;
         }

@@ -4,6 +4,9 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
+import android.R.attr.name
+import com.itheima.player.model.bean.HomeItemBean
+
 
 /**
  * Created by lcq on 2017/12/15.
@@ -44,9 +47,28 @@ object GsonUtils {
      * @param cls
      * @return
      */
-    fun <T> GsonToList(gsonString: String): List<T> {
-        return gson.fromJson(gsonString, object : TypeToken<List<T>>() {
-        }.getType())
+
+    inline fun < reified T> gsonToList(result: String): T {
+
+        var rs: T
+
+        val type = object : TypeToken<T>() {
+        }.type
+
+        rs = gson.fromJson(result, type)
+        return rs
+    }
+
+
+    fun  gsonToListItemBean(result: String): List<HomeItemBean> {
+
+        var rs: List<HomeItemBean>
+
+        val type = object : TypeToken<HomeItemBean>() {
+        }.type
+
+        rs = gson.fromJson(result, type)
+        return rs
     }
 
     /**
@@ -59,7 +81,7 @@ object GsonUtils {
         return gson.fromJson(gsonString,
                 object : TypeToken<List<Map<String, T>>>() {
 
-                }.getType())
+                }.type)
     }
 
     /**
@@ -70,7 +92,6 @@ object GsonUtils {
      */
     fun <T> GsonToMaps(gsonString: String): Map<String, T>? {
         return gson.fromJson(gsonString, object : TypeToken<Map<String, T>>() {
-
-        }.getType())
+        }.type)
     }
 }

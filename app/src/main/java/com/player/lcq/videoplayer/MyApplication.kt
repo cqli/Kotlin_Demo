@@ -1,7 +1,16 @@
 package com.player.lcq.videoplayer
 
+import android.content.Context
 import android.support.multidex.MultiDexApplication
+import android.support.v7.app.AppCompatDelegate
 import com.player.lcq.videoplayer.net.nohttprxjava.DefOkHttpNetworkExecutor
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater
+import com.scwang.smartrefresh.layout.api.RefreshHeader
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.yanzhenjie.nohttp.InitializationConfig
 import com.yanzhenjie.nohttp.Logger
 import com.yanzhenjie.nohttp.NoHttp
@@ -11,9 +20,23 @@ import com.yanzhenjie.nohttp.NoHttp
  * Created by lcq on 2017/12/12.
  */
 class MyApplication : MultiDexApplication() {
+
     override fun onCreate() {
         super.onCreate()
         initNoHttp()
+        initRefreshLayout()
+    }
+
+    private fun initRefreshLayout() {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        SmartRefreshLayout.setDefaultRefreshHeaderCreater { context, layout ->
+            //            layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white)//全局设置主题颜色
+            ClassicsHeader(context).setSpinnerStyle(SpinnerStyle.Translate)
+        }
+        SmartRefreshLayout.setDefaultRefreshFooterCreater { context, layout ->
+            //            layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white)//全局设置主题颜色
+            ClassicsFooter(context).setSpinnerStyle(SpinnerStyle.Translate)
+        }
     }
 
     /**
@@ -45,7 +68,7 @@ class MyApplication : MultiDexApplication() {
                 //                .addParam()
                 //                .sslSocketFactory() // 全局SSLSocketFactory。
                 //                .hostnameVerifier() // 全局HostnameVerifier。
-                .retry(1) // 全局重试次数，配置后每个请求失败都会重试x次。
+//                .retry(1) // 全局重试次数，配置后每个请求失败都会重试x次。
                 .build()
         Logger.setDebug(true);// 开启NoHttp的调试模式, 配置后可看到请求过程、日志和错误信息。
         Logger.setTag("NoHttpSample");// 打印Log的tag。

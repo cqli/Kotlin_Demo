@@ -4,12 +4,9 @@
     android:layout_height="match_parent"
     android:background="?attr/custom_attr_app_bg">
 
-    <TextView
-        android:id="@+id/tv_result"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/custom_attr_app_bg"
-        android:gravity="center"
-        android:textColor="?attr/custom_attr_text_color" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
