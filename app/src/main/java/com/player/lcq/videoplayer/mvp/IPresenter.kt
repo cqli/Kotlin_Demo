@@ -1,4 +1,4 @@
-package com.sqliteutils.lcq.base_mvp_http_utils.mvp
+package com.player.lcq.videoplayer.mvp
 
 import android.app.Activity
 
@@ -30,5 +30,5 @@ interface IPresenter {
     /**
      * 在框架中 [Activity.onDestroy] 会默认调用[IPresenter.onDestroy]
      */
-    abstract fun onDestroy()
+    fun onDestroy()
 }

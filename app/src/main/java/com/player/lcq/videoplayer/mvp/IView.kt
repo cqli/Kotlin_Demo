@@ -1,4 +1,4 @@
-package com.sqliteutils.lcq.base_mvp_http_utils.mvp
+package com.player.lcq.videoplayer.mvp
 
 /**
  * Created by lcq on 2017/12/28.
@@ -7,7 +7,7 @@ package com.sqliteutils.lcq.base_mvp_http_utils.mvp
  *
  * ================================================
  */
-open interface IView<RESPONSE> {
+open interface IView<in RESPONSE> {
     companion object {
         val TYPE_INIT_OR_REFRESH = 1
         val TYPE_LOAD_MORE = 2
@@ -23,10 +23,6 @@ open interface IView<RESPONSE> {
      */
     fun hideLoading()
 
-    /**
-     * 显示信息
-     */
-    fun showMessage(message: String)
 
     /**
      * 获取数据失败
@@ -36,7 +32,7 @@ open interface IView<RESPONSE> {
     /**
      * 初始化数据或者刷新数据成功
      */
-    fun loadSuccess(reponse: RESPONSE?)
+    fun loadSuccess(response: RESPONSE?)
 
     /**
      * 加载更多成功

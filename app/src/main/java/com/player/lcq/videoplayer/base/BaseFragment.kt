@@ -20,8 +20,15 @@ abstract class BaseFragment : Fragment(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sp = SharedPreferencesUtil.getInstance(context)
+        init()
     }
 
+    /**
+     * fragment初始化
+     */
+    open protected fun init() {
+
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return initView()
@@ -41,8 +48,12 @@ abstract class BaseFragment : Fragment(), AnkoLogger {
     /**
      * 初始化数据操作
      */
-    open fun initData() {
-    }
+    abstract fun initData()
+
+    /**
+     * adapter listener
+     */
+    abstract fun initListener()
 
     fun myToast(msg: String) {
         context?.runOnUiThread { toast(msg) }

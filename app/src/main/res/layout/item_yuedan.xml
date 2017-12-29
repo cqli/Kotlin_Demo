@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/custom_attr_app_bg"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:elevation="0.5dp"
+        app:cardBackgroundColor="?attr/custom_attr_app_bg"
+        app:cardMaxElevation="1dp"
+        app:contentPadding="0.1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <ImageView
+                    android:id="@+id/iv_item_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/tv_integral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/tv_usercount_totalfavorites"
+                    android:layout_margin="5dp"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?attr/custom_attr_text_color" />
+
+                <TextView
+                    android:id="@+id/tv_usercount_totalfavorites"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/tv_videocount_totalfviews"
+                    android:layout_margin="5dp"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?attr/custom_attr_text_color" />
+
+                <TextView
+                    android:id="@+id/tv_videocount_totalfviews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/tv_item_title"
+                    android:layout_margin="5dp"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?attr/custom_attr_text_color" />
+
+                <TextView
+                    android:id="@+id/tv_item_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/tv_item_des"
+                    android:layout_margin="5dp"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?attr/custom_attr_text_color" />
+
+                <TextView
+                    android:id="@+id/tv_item_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?attr/custom_attr_text_color" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_photo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5dp" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_toEndOf="@+id/iv_photo"
+                    android:background="?attr/custom_attr_app_bg"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?attr/custom_attr_text_color" />
+
+                <TextView
+                    android:id="@+id/tv_uservip_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_username"
+                    android:layout_margin="5dp"
+                    android:layout_toEndOf="@+id/iv_photo"
+                    android:background="?attr/custom_attr_app_bg"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?attr/custom_attr_text_color" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/custom_attr_app_bg"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="?attr/custom_attr_text_color" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/custom_attr_app_bg"
+                android:textColor="?attr/custom_attr_text_color" />
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

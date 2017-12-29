@@ -67,7 +67,7 @@ public class URLProviderUtils {
         return device;
     }
 
-    public static String getMVListUrl(String area, int offset, int size) {
+    public static String getMVListUrl(String area, int offset) {
         String url = "http://mapi.yinyuetai.com/video/list.json?deviceinfo="
                 + "{\"aid\":\"10201036\",\"os\":\"Android\","
                 + "\"ov\":" + "\"" + getSystemVersion() + "\"" + ","
@@ -81,11 +81,11 @@ public class URLProviderUtils {
                 + "\"clid\":110025000}"
                 + "&area=" + area
                 + "&offset=" + offset
-                + "&size=" + size;
+                + "&size=" + 20;
         return url;
     }
 
-    public static String getYueDanUrl(int offset, int size) {
+    public static String getYueDanUrl(int offset) {
         String url = "http://mapi.yinyuetai.com/playlist/list.json?deviceinfo="
                 + "{\"aid\":\"10201036\",\"os\":\"Android\","
                 + "\"ov\":" + "\"" + getSystemVersion() + "\"" + ","
@@ -98,7 +98,7 @@ public class URLProviderUtils {
                 + "\"dbcaa6c4482bc05ecb0bf39dabf207d2\","
                 + "\"clid\":110025000}"
                 + "&offset=" + offset
-                + "&size=" + size;
+                + "&size=" + 20;
         return url;
     }
 

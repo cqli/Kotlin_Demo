@@ -1,19 +1,21 @@
 package com.player.lcq.videoplayer.mvp.presenter
 
-import com.itheima.player.model.bean.HomeItemBean
-import com.player.lcq.videoplayer.net.nohttprxjava.httpapi.HomeProtocol
-import com.player.lcq.videoplayer.utils.RxUtils
+import com.itheima.player.model.bean.MvAreaBean
 import com.player.lcq.videoplayer.mvp.IPresenter
 import com.player.lcq.videoplayer.mvp.IView
+import com.player.lcq.videoplayer.net.nohttprxjava.httpapi.MVProtocol
+import com.player.lcq.videoplayer.net.nohttprxjava.httpapi.YueDanProtocol
+import com.player.lcq.videoplayer.ui.fragment.MvFragment
+import com.player.lcq.videoplayer.utils.RxUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by lcq on 2017/12/28.
- * 悦单presenter
+ * mv首页presenter
  */
-class HomePresenter(var homeView: IView<List<HomeItemBean>>?) : IPresenter {
+class MvPresenter(private var homeView: IView<List<MvAreaBean>>?) : IPresenter {
     private var mHomeDisposable: Disposable? = null
     /**
      * 界面初始化的操作
@@ -23,7 +25,7 @@ class HomePresenter(var homeView: IView<List<HomeItemBean>>?) : IPresenter {
 
     override fun loadDatas() {
         RxUtils.dispose(mHomeDisposable)
-        mHomeDisposable = HomeProtocol.testHomeRequest(0)
+        mHomeDisposable = MVProtocol.MVRequest()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
@@ -34,15 +36,6 @@ class HomePresenter(var homeView: IView<List<HomeItemBean>>?) : IPresenter {
     }
 
     override fun loadMore(offset: Int) {
-        RxUtils.dispose(mHomeDisposable)
-        mHomeDisposable = HomeProtocol.testHomeRequest(offset)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    homeView?.loadMore(it)
-                }, {
-                    homeView?.onError(IView.TYPE_LOAD_MORE, it.toString())
-                })
     }
 
     override fun onDestroy() {

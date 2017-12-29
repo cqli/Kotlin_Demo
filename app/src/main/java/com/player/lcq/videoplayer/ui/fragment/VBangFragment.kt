@@ -8,25 +8,18 @@ import com.player.lcq.videoplayer.R
 import com.player.lcq.videoplayer.adapter.HomeAdapter
 import com.player.lcq.videoplayer.base.BaseFragment
 import com.player.lcq.videoplayer.mvp.presenter.HomePresenter
-import com.player.lcq.videoplayer.net.nohttprxjava.TestProtocol
-import com.player.lcq.videoplayer.utils.RxUtils
-import com.sqliteutils.lcq.base_mvp_http_utils.mvp.IView
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
+import com.player.lcq.videoplayer.mvp.IView
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
  * Created by lcq on 2017/12/5.
+ * 榜单
  */
 class VBangFragment : BaseFragment(), IView<List<HomeItemBean>> {
     override fun showLoading() {
     }
 
     override fun hideLoading() {
-    }
-
-    override fun showMessage(message: String) {
     }
 
 
@@ -51,7 +44,7 @@ class VBangFragment : BaseFragment(), IView<List<HomeItemBean>> {
     }
 
     private val adapter by lazy { HomeAdapter() }
-    val presenter by lazy { HomePresenter(this) }
+    private val presenter by lazy { HomePresenter(this) }
     override fun initView(): View? {
         return View.inflate(context, R.layout.fragment_home, null)
     }
@@ -69,7 +62,7 @@ class VBangFragment : BaseFragment(), IView<List<HomeItemBean>> {
     /**
      *SmartRefreshlayout监听
      */
-    fun initListener() {
+    override fun initListener() {
         refreshLayout.setOnRefreshListener {
             presenter.loadDatas()
         }
