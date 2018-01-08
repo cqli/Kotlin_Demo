@@ -36,5 +36,4 @@ class YueDanFragment : BaseListFragment<YueDanBean, YueDanBean.PlayListsBean, Yu
         return YueDanPresenter(this)
     }
 
-
 }

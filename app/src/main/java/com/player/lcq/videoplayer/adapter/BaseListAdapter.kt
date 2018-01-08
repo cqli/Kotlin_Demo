@@ -38,10 +38,20 @@ abstract class BaseListAdapter<ITEMBEAN, ITEMVIEW : View> : RecyclerView.Adapter
         return BaseListHolder(getItemView(parent?.context))
     }
 
+    //定义函数类型变量
+    var listener: ((itemBean: ITEMBEAN) -> Unit)? = null
+
     override fun onBindViewHolder(holder: BaseListHolder?, position: Int) {
         val itemView = holder?.itemView as ITEMVIEW
         //条目刷新
         refreshItemView(itemView, list.get(position))
+        //设置条目点击事件
+        itemView.setOnClickListener {
+            //条目点击事件
+            listener?.let {
+                it(list.get(position))
+            }
+        }
 
 
     }

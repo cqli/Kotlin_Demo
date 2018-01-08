@@ -18,6 +18,7 @@ class MvFragment : BaseFragment(), IView<List<MvAreaBean>> {
         //在fragment中管理fragment需要用childFragmentManager
         val adapter = MvPagerAdapter(context, response, childFragmentManager)
         viewPager.adapter = adapter
+        viewPager.offscreenPageLimit = response?.size!!
         tabLayout.setupWithViewPager(viewPager)
     }
 

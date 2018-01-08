@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * 列表基类
  */
 abstract class BaseListFragment<RESPONSE, ITEMBEAN, ITEMVIEW : View> : BaseFragment(), IView<RESPONSE> {
-    private val adapter by lazy { getSpecialAdapter() }
-    private val presenter by lazy { getSpecialPresenter() }
+    val adapter by lazy { getSpecialAdapter() }
+    val presenter by lazy { getSpecialPresenter() }
     override fun showLoading() {
     }
 

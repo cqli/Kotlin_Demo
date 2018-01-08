@@ -10,11 +10,11 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:tabIndicatorColor="#fff"
+        android:background="?attr/custom_attr_app_title_layout_bg"
+        app:tabIndicatorColor="#3d658d"
         app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable"
-        app:tabSelectedTextColor="#fff"
+        app:tabSelectedTextColor="?attr/custom_attr_text_color"
         app:tabTextColor="#40000000" />
 
     <android.support.v4.view.ViewPager
